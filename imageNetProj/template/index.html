@@ -1,0 +1,48 @@
+{% extends 'headerPage.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Image Classification</h2>
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+
+                    <form method="post" enctype="multipart/form-data" action="{% url 'firstApp:predictImage' %}" class="mb-4">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="imageInput">Select Image File(s):</label>
+                            <input type="file" class="form-control-file" id="imageInput" name="filePath" accept="image/*" required multiple>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Classify Images</button>
+                    </form>
+
+                    {% if success %}
+                    <div class="results mt-4">
+                        <h3>Classification Results</h3>
+                        {% for result in results %}
+                        <div class="result-item mb-4">
+                            <div class="alert alert-success">
+                                <p><strong>Predicted Class:</strong> {{ result.predictedLabel }}</p>
+                                <p><strong>Confidence:</strong> {{ result.confidence }}</p>
+                            </div>
+                            <div class="image-preview mt-3">
+                                <img src="{{ result.filePathName }}" alt="Uploaded Image" class="img-fluid">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
