@@ -65,7 +65,8 @@ CORS_ALLOW_HEADERS = [
 
 # Allow requests from your testing domain or Postman
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Your frontend URL
+    "http://localhost:3000",
+    "https://phonebechpk.com",# Your frontend URL
     "https://www.postman.com"  # Postman requests
 ]
 
