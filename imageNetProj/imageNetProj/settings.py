@@ -11,7 +11,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '0.0.0.0',  # Allow external requests on all interfaces
-    '13.60.241.230',  # Your AWS IP address
+    '13.49.227.21',  # Your AWS IP address
     'phonebechpk.com',
     'www.phonebechpk.com',
     '*',  # Replace with your actual domain name or IP
